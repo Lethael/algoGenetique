@@ -1,3 +1,7 @@
+/**
+* By Lethael le 22/11/2018
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -130,11 +134,11 @@ bool greaterThan(Person p, Person p1){
     return p.score > p1.score;
 }
 
-    /** Insérer dans le vector x fois la même personne en fonction
+    /** InsÃ©rer dans le vector x fois la mÃªme personne en fonction
     * De son % de fitness
     */
     /** augmente le nombre de proba pour les plus fort d'avoir des enfants
-    *   totalFit = nb total de score de la génération
+    *   totalFit = nb total de score de la gÃ©nÃ©ration
     *   p.fitness = p.score / totalFit * 100
     *
     *   Insertion de p.fitness * la personne dans un vector
@@ -157,9 +161,9 @@ vector<Person> MattingPool(vector<Person> p){
 }
 
 /**
-*   Génération suivante en récupérant les gênes de la
-*   génération actuelle.
-*   30% de chance de mutation d'un gène
+*   GÃ©nÃ©ration suivante en rÃ©cupÃ©rant les gÃªnes de la
+*   gÃ©nÃ©ration actuelle.
+*   30% de chance de mutation d'un gÃ¨ne
 */
 vector<Person> NexGeneration(vector<Person> oldGen, int toFind, string toFindstr){
     for(int i = 0; i < oldGen.size(); i++){
@@ -171,7 +175,7 @@ vector<Person> NexGeneration(vector<Person> oldGen, int toFind, string toFindstr
      vector<Person> mattingPool = MattingPool(oldGen);
      for(int i = 0; i < nextGen.size()-1; i++){
         /**
-        *   Random du père et de la mère ainsi que de la possible mutation
+        *   Random du pÃ¨re et de la mÃ¨re ainsi que de la possible mutation
         */
         int scalepoint = rand()%toFind;
         int rndMutate = rand()% 100;
