@@ -65,7 +65,7 @@ Add random letter into sequence string
 */
 void Person::Init(int lengthSentence){
     sequence = "";
-    string alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+    string alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.!?,;: ";
     for(int i = 0; i < lengthSentence; i++){
         sequence += alph[rand()%alph.length()];
     }
