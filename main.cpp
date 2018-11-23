@@ -1,5 +1,10 @@
 /**
-* By Lethael le 22/11/2018
+By Lethael
+11/22/2018
+
+Algorithme génétique permettant la recherche d'une chaine de caractères données
+à partir d'une population ayant des chromosomes (string) aléatoire, et évoluant et
+mutant à chaque génération.
 */
 
 #include <iostream>
@@ -91,31 +96,31 @@ vector<Person> MattingPool(vector<Person> oldGen);
 int main()
 {
     srand(time(NULL));
-    string toFind = "You ! Should not to pass !";
+    string toFind = "Vous ne passerez pas !";
     double totalFitness = 0.0;
-    vector<Person> ch(100);
-    vector<Person>::iterator it = ch.begin();
+    vector<Person> population(100);
+    vector<Person>::iterator it = population.begin();
 
 
-    for(it;it != ch.end(); ++it){
+    for(it;it != population.end(); ++it){
         InitAndTestFitness(*it, toFind);
     }
 
-    sort(ch.begin(), ch.end(), greaterThan);
+    sort(population.begin(), population.end(), greaterThan);
 
     for(int i = 0; i < 10000; i++){
-        ch = NexGeneration(ch, toFind.length(), toFind);
-        sort(ch.begin(), ch.end(), greaterThan);
+        population = NexGeneration(population, toFind.length(), toFind);
+        sort(population.begin(), population.end(), greaterThan);
         if(i % 100 == 0){
             cout << "Turn " << i  << " the best is : "<< endl;
-            cout << ch[0].sequence << "\n" << ch[0].score << endl;
+            cout << population[0].sequence << "\n" << population[0].score << endl;
         }
 
-        if(ch[0].sequence == toFind){
-            cout << "Au tour : " << i <<"\n" << ch[0].sequence << "\n a ete trouve" << endl;
+        if(population[0].sequence == toFind){
+            cout << "Au tour : " << i <<"\n" << population[0].sequence << "\n a ete trouve" << endl;
             cout << "Affichage des 10 premiers de la pop en fonction du score : \n";
             for(int i = 0; i < 10; i++)
-                cout << ch[i].sequence << "\n Score : " << ch[i].score << endl;
+                cout << population[i].sequence << "\n Score : " << population[i].score << endl;
             return 0;
         }
     }
